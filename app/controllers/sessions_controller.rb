@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       token = generate_jwt(user)
-      render json: { token: token }, status: :ok
+      render json: { token: token, userId: user.id }, status: :ok
     else
       render json: { message: 'Invalid credentials' }, status: :unauthorized
     end
