@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     render json: user
   end
+
   def create
     user = User.new(username: params[:username], password: params[:password], email: params[:email])
     if user.save
@@ -13,6 +14,10 @@ class UsersController < ApplicationController
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def current
+    render json: @current_user
   end
 
   private

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show'
   post '/users/signup/', to: 'users#create'
+  
+  get '/current_user', to: 'users#current'
 end
