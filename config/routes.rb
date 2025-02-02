@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   post '/users/signup/', to: 'users#create'
   
   get '/current_user', to: 'users#current'
+  post '/users/:user_id/workouts/new', to: 'workouts#create'
+  get '/users/:user_id/workouts', to: 'workouts#index'
 end
