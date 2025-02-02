@@ -1,19 +1,21 @@
 class WorkoutsController < ApplicationController
+  skip_before_action :authorize_request, only: [:create]
+
   def index
     render json: user.workouts
   end
 
   def create
-    workout = Workout.new(workout_params)
+    workout = Workout.new(name: params[:name], user_id: params[:user_id])
     if workout.save
       render json: workout
     else
-      # handle errors gracefully
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def destroy
-
+    # destroy logic
   end
 
   private
