@@ -1,7 +1,8 @@
 class WorkoutsController < ApplicationController
-  skip_before_action :authorize_request, only: [:create]
+  skip_before_action :authorize_request, only: [:create, :index]
 
   def index
+    user = User.find(params[:user_id])
     render json: user.workouts
   end
 
